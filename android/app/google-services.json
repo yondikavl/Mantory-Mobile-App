@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "407813752204",
+    "project_id": "qrcode-app-getx",
+    "storage_bucket": "qrcode-app-getx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407813752204:android:6e6b7712dadb408d1a42a9",
+        "android_client_info": {
+          "package_name": "com.yondikavl.qrcode_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC1y9LG6xYrOOO2CEh6RbxmILy8r_AAK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

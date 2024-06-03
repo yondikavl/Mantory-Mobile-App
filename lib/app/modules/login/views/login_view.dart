@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:qrcode_app/app/controllers/auth_controller.dart';
+import 'package:qrcode_app/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -13,6 +15,8 @@ class LoginView extends GetView<LoginController> {
   final TextEditingController passC = TextEditingController(
     text: "admin123",
   );
+
+  final AuthController authC = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +65,38 @@ class LoginView extends GetView<LoginController> {
             ),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  backgroundColor: Colors.green),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-            )
+                onPressed: () async {
+                  if (controller.isLoading.isFalse) {
+                    if (emailC.text.isNotEmpty && passC.text.isNotEmpty) {
+                      controller.isLoading(true);
+                      Map<String, dynamic> hasil =
+                          await authC.login(emailC.text, passC.text);
+                      controller.isLoading(false);
+
+                      if (hasil["error"] == true) {
+                        Get.snackbar("Error", hasil["message"]);
+                      } else {
+                        Get.offAllNamed(Routes.home);
+                      }
+                    } else {
+                      Get.snackbar("Error", "Email dan Password harus diisi.");
+                    }
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    backgroundColor: Colors.green),
+                child: Obx(
+                  () => Text(
+                    controller.isLoading.isFalse ? "Login" : "Loading...",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ))
           ],
         ));
   }

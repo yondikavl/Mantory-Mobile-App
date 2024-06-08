@@ -10,8 +10,13 @@ class DetailProductView extends GetView<DetailProductController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DetailProductView'),
+        title: const Text(
+          'Detail Product',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
+        backgroundColor: Colors.indigo,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: const Center(
         child: Text(

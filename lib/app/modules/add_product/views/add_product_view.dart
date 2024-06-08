@@ -15,11 +15,12 @@ class AddProductView extends GetView<AddProductController> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'AddProductView',
+            'Add Product',
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.indigo,
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: ListView(
           padding: const EdgeInsets.all(20),
@@ -40,7 +41,7 @@ class AddProductView extends GetView<AddProductController> {
               autocorrect: false,
               controller: nameC,
               keyboardType: TextInputType.text,
-              maxLength: 10,
+              maxLength: 50,
               decoration: InputDecoration(
                 labelText: "Product Name",
                 border:
@@ -87,7 +88,7 @@ class AddProductView extends GetView<AddProductController> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   padding: const EdgeInsets.symmetric(vertical: 12),
-                  backgroundColor: Colors.green),
+                  backgroundColor: Colors.indigo),
               child: Obx(
                 () => Text(
                   controller.isLoading.isFalse ? "Add Product" : "Loading...",

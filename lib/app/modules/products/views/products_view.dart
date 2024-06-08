@@ -16,11 +16,12 @@ class ProductsView extends GetView<ProductsController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'ProductsView',
+          'Products',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.indigo,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: controller.streamProducts(),
@@ -79,8 +80,8 @@ class ProductsView extends GetView<ProductsController> {
                           ),
                         ),
                         Container(
-                          height: 50,
-                          width: 50,
+                          height: 60,
+                          width: 60,
                           child: QrImageView(
                             data: product.code,
                             version: QrVersions.auto,

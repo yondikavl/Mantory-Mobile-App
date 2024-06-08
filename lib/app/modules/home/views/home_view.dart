@@ -14,11 +14,11 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'HomeView',
+          'Home',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.indigo,
       ),
       body: GridView.builder(
         itemCount: 4,
@@ -94,6 +94,8 @@ class HomeView extends GetView<HomeController> {
             Get.snackbar("error", hasil["error"]);
           }
         },
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
         child: Icon(Icons.logout),
       ),
     );

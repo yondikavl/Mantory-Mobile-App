@@ -41,7 +41,6 @@ class AddProductView extends GetView<AddProductController> {
               autocorrect: false,
               controller: nameC,
               keyboardType: TextInputType.text,
-              maxLength: 50,
               decoration: InputDecoration(
                 labelText: "Product Name",
                 border:
@@ -53,7 +52,6 @@ class AddProductView extends GetView<AddProductController> {
               autocorrect: false,
               controller: qtyC,
               keyboardType: TextInputType.number,
-              maxLength: 10,
               decoration: InputDecoration(
                 labelText: "Quantity",
                 border:

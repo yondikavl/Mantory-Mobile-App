@@ -1,23 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class DetailProductController extends GetxController {
-  //TODO: Implement DetailProductController
+  RxBool isLoadingUpdate = false.obs;
+  RxBool isLoadingDelete = false.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  Future<Map<String, dynamic>> editProduct(Map<String, dynamic> data) async {
+    try {
+      await firestore.collection("products").doc(data["id"]).update({
+        "name": data["name"],
+        "qty": data["qty"],
+      });
+
+      return {
+        "error": false,
+        "message": "Berhasil memperbarui product.",
+      };
+    } catch (e) {
+      return {
+        "error": true,
+        "message": "Tidak dapat memperbarui product.",
+      };
+    }
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  Future<Map<String, dynamic>> deleteProduct(String id) async {
+    try {
+      await firestore.collection("products").doc(id).delete();
 
-  @override
-  void onClose() {
-    super.onClose();
+      return {
+        "error": false,
+        "message": "Berhasil menghapus product.",
+      };
+    } catch (e) {
+      return {
+        "error": true,
+        "message": "Tidak dapat menghapus product.",
+      };
+    }
   }
-
-  void increment() => count.value++;
 }

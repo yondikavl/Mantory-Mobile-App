@@ -2,12 +2,13 @@
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
 
 ## About The Project
+QR Inventory is a Flutter application developed with Firebase and GetX State Management. It allows users to add products, view the added products, generate QR codes for products, scan QR codes of products, and print PDF documents from the list of products.
+<br />
 
 <div align="center">
   <img src="./assets/QR_Inventory_Preview.png" alt="QR Inventory" width="auto" height="auto"  style="border-radius:50%">    
 </div>
-<br />
-QR Inventory is a Flutter application developed with Firebase and GetX State Management. It allows users to add products, view the added products, generate QR codes for products, scan QR codes of products, and print PDF documents from the list of products.
+
 
 ## Features
 

@@ -207,4 +207,33 @@ class HomeController extends GetxController {
     // open pdf
     await OpenFile.open(file.path);
   }
+
+  Future<Map<String, dynamic>> getProductById(String productCode) async {
+    try {
+      var hasil = await firestore
+          .collection("products")
+          .where("code", isEqualTo: productCode)
+          .get();
+
+      if (hasil.docs.isEmpty) {
+        return {
+          "error": true,
+          "message": "Product not found.",
+        };
+      }
+
+      Map<String, dynamic> data = hasil.docs.first.data();
+
+      return {
+        "error": false,
+        "message": "Successfully get Detail Product.",
+        "data": ProductModel.fromJson(data),
+      };
+    } catch (e) {
+      return {
+        "error": true,
+        "message": "Detail Product not found.",
+      };
+    }
+  }
 }

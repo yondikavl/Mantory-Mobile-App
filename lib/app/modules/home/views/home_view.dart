@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 import 'package:get/get.dart';
 import 'package:qrcode_app/app/controllers/auth_controller.dart';
@@ -47,8 +48,26 @@ class HomeView extends GetView<HomeController> {
             case 2:
               title = "QR Code";
               icon = Icons.qr_code;
-              onTap = () {
-                print("open camera");
+              onTap = () async {
+                String barcode = await FlutterBarcodeScanner.scanBarcode(
+                  "#000000",
+                  "Back",
+                  true,
+                  ScanMode.QR,
+                );
+
+                // get data dari firebase serach by product id
+                Map<String, dynamic> hasil =
+                    await controller.getProductById(barcode);
+                if (hasil["error"] == false) {
+                  Get.toNamed(Routes.detailProduct, arguments: hasil["data"]);
+                } else {
+                  Get.snackbar(
+                    "Error",
+                    hasil["message"],
+                    duration: const Duration(seconds: 2),
+                  );
+                }
               };
               break;
             case 3:

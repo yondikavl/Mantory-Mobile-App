@@ -27,7 +27,7 @@ class LoginView extends GetView<LoginController> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.indigo,
         ),
         body: ListView(
           padding: const EdgeInsets.all(24),
@@ -88,11 +88,11 @@ class LoginView extends GetView<LoginController> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   padding: const EdgeInsets.symmetric(vertical: 12),
-                  backgroundColor: Colors.green),
+                  backgroundColor: Colors.indigo),
               child: Obx(
                 () => Text(
                   controller.isLoading.isFalse ? "Login" : "Loading...",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                   ),

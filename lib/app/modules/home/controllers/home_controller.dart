@@ -70,8 +70,8 @@ class HomeController extends GetxController {
                     padding: const pw.EdgeInsets.all(20),
                     child: pw.Text(
                       "${product.qty}",
-                      textAlign: const pw.TextAlign.center,
-                      style: pw.TextStyle(
+                      textAlign: pw.TextAlign.center,
+                      style: const pw.TextStyle(
                         fontSize: 10,
                       ),
                     ),

@@ -2,8 +2,9 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -16,6 +17,12 @@ class HomeController extends GetxController {
 
   void downloadCatalog() async {
     final pdf = pw.Document();
+
+    // Load the fonts
+    final fontRegular =
+        pw.Font.ttf(await rootBundle.load('assets/fonts/Roboto-Regular.ttf'));
+    final fontBold =
+        pw.Font.ttf(await rootBundle.load('assets/fonts/Roboto-Bold.ttf'));
 
     var getData = await firestore.collection("products").get();
 
@@ -41,8 +48,9 @@ class HomeController extends GetxController {
                     child: pw.Text(
                       "${index + 1}",
                       textAlign: pw.TextAlign.center,
-                      style: const pw.TextStyle(
+                      style: pw.TextStyle(
                         fontSize: 10,
+                        font: fontRegular,
                       ),
                     ),
                   ),
@@ -51,8 +59,9 @@ class HomeController extends GetxController {
                     child: pw.Text(
                       product.code,
                       textAlign: pw.TextAlign.center,
-                      style: const pw.TextStyle(
+                      style: pw.TextStyle(
                         fontSize: 10,
+                        font: fontRegular,
                       ),
                     ),
                   ),
@@ -61,8 +70,9 @@ class HomeController extends GetxController {
                     child: pw.Text(
                       product.name,
                       textAlign: pw.TextAlign.center,
-                      style: const pw.TextStyle(
+                      style: pw.TextStyle(
                         fontSize: 10,
+                        font: fontRegular,
                       ),
                     ),
                   ),
@@ -71,8 +81,9 @@ class HomeController extends GetxController {
                     child: pw.Text(
                       "${product.qty}",
                       textAlign: pw.TextAlign.center,
-                      style: const pw.TextStyle(
+                      style: pw.TextStyle(
                         fontSize: 10,
+                        font: fontRegular,
                       ),
                     ),
                   ),
@@ -96,8 +107,9 @@ class HomeController extends GetxController {
               child: pw.Text(
                 "Catalog Products",
                 textAlign: pw.TextAlign.center,
-                style: const pw.TextStyle(
+                style: pw.TextStyle(
                   fontSize: 24,
+                  font: fontBold,
                 ),
               ),
             ),
@@ -119,6 +131,7 @@ class HomeController extends GetxController {
                         style: pw.TextStyle(
                           fontSize: 10,
                           fontWeight: pw.FontWeight.bold,
+                          font: fontBold,
                         ),
                       ),
                     ),
@@ -130,6 +143,7 @@ class HomeController extends GetxController {
                         style: pw.TextStyle(
                           fontSize: 10,
                           fontWeight: pw.FontWeight.bold,
+                          font: fontBold,
                         ),
                       ),
                     ),
@@ -141,6 +155,7 @@ class HomeController extends GetxController {
                         style: pw.TextStyle(
                           fontSize: 10,
                           fontWeight: pw.FontWeight.bold,
+                          font: fontBold,
                         ),
                       ),
                     ),
@@ -152,6 +167,7 @@ class HomeController extends GetxController {
                         style: pw.TextStyle(
                           fontSize: 10,
                           fontWeight: pw.FontWeight.bold,
+                          font: fontBold,
                         ),
                       ),
                     ),
@@ -163,6 +179,7 @@ class HomeController extends GetxController {
                         style: pw.TextStyle(
                           fontSize: 10,
                           fontWeight: pw.FontWeight.bold,
+                          font: fontBold,
                         ),
                       ),
                     ),

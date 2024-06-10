@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
               title = "Catalog";
               icon = Icons.document_scanner_outlined;
               onTap = () {
-                print("open catalog");
+                controller.downloadCatalog();
               };
               break;
             default:

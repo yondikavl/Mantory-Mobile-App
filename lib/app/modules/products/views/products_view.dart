@@ -75,7 +75,7 @@ class ProductsView extends GetView<ProductsController> {
                               ),
                               const SizedBox(height: 5),
                               Text(product.name),
-                              Text("Jumlah : ${product.qty}"),
+                              Text("Quantity : ${product.qty}"),
                             ],
                           ),
                         ),

@@ -78,7 +78,7 @@ class AddProductView extends GetView<AddProductController> {
                     Get.snackbar(hasil["Error"] == true ? "Error" : "Success",
                         hasil["message"]);
                   } else {
-                    Get.snackbar("Error", "Semua data wajib diisi!");
+                    Get.snackbar("Error", "All data must be filled in");
                   }
                 }
               },

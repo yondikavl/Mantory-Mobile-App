@@ -13,7 +13,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
-  flutter_launcher_icons: ^0.13.1
   get: 4.6.6
   open_file_plus: ^3.4.1+1
   path_provider: ^2.1.3

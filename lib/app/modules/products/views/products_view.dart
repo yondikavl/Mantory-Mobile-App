@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qrcode_app/app/data/models/product_model.dart';
@@ -11,6 +9,7 @@ import '../controllers/products_controller.dart';
 
 class ProductsView extends GetView<ProductsController> {
   const ProductsView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +37,9 @@ class ProductsView extends GetView<ProductsController> {
             );
           }
 
-          List<ProductModel> allProducts = [];
-
-          for (var element in snapProducts.data!.docs) {
-            allProducts.add(ProductModel.fromJson(element.data()));
-          }
+          List<ProductModel> allProducts = snapProducts.data!.docs
+              .map((doc) => ProductModel.fromJson(doc.data()))
+              .toList();
 
           return ListView.builder(
             itemCount: allProducts.length,
@@ -50,6 +47,7 @@ class ProductsView extends GetView<ProductsController> {
             itemBuilder: (context, index) {
               ProductModel product = allProducts[index];
               return Card(
+                color: Colors.indigo.shade50,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -60,7 +58,7 @@ class ProductsView extends GetView<ProductsController> {
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     height: 100,
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Row(
                       children: [
                         Expanded(
